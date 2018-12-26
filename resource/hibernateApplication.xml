@@ -22,7 +22,7 @@
         <!--属性文件当中的名称不能和name名称一样-->
         <property name="url" value="${jdbc.url}" />
         <property name="username" value="${jdbc.username}" />
-        <property name="password" value="${jdbc.password}" />
+        <property name="password" value="${jdbc.password}56" />
     </bean>
     <!-- Spring整合Hibernate -->
     <!-- 引入Hibernate的配置的信息===== spring-orm.jar========== -->

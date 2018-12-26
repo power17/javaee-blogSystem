@@ -6,8 +6,10 @@
 <struts>
 
     <package name="struts" extends="struts-default">
-        <!--spring 当中的id-->
-        <!--<action name="account_*" class="accountAction" method="{1}"/>-->
+        <!--loginAciton_login.action-->
+        <action name="loginAction_*" class="com.itlike.web.LoginAction" method="{1}">
+            <allowed-methods>login</allowed-methods>
+        </action>
     </package>
 
 </struts>

@@ -13,7 +13,7 @@
 	<body>
 		<div id="container">
 			
-			<form action="admin_index.jsp" id="login_form">
+			<form action="${pageContext.request.contextPath}/loginAction_login.action" id="login_form">
 				<div class="login">博客后台管理系统
 				 <!--  <span style="color:red">用户名密码错</span> -->
 				</div>
