@@ -7,9 +7,10 @@
 
     <package name="struts" extends="struts-default">
         <!--loginAciton_login.action-->
-        <action name="loginAction_*" class="com.itlike.web.LoginAction" method="{1}">
+        <action name="loginAction_*" class="loginAction" method="{1}">
             <allowed-methods>login</allowed-methods>
         </action>
+
     </package>
 
 </struts>

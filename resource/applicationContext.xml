@@ -17,5 +17,7 @@
     <!--导入hibernate相关配置-->
     <import resource="hibernateApplication.xml"/>
 
+    <bean name="loginAction" class="com.itlike.web.LoginAction" scope="prototype"/>
+
 
 </beans>
