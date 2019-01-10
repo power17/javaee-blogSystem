@@ -3,7 +3,7 @@ package com.itlike.web;
 import com.itlike.web.service.LoginService;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
-import domain.User;
+import com.itlike.web.domain.User;
 
 public class LoginAction extends ActionSupport implements ModelDriven<User>{
     private User user = new User();

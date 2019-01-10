@@ -24,6 +24,8 @@
     <bean id="loginService" class="com.itlike.web.service.impl.LoginServiceImpl">
         <property name="userDao" ref="userDao"></property>
     </bean>
-     <bean id="userDao" class="com.itlike.web.dao.impl.UserDaoimpl"></bean>
+     <bean id="userDao" class="com.itlike.web.dao.impl.UserDaoimpl">
+         <property name="sessionFactory" ref="sessionFactory"></property>
+     </bean>
 
 </beans>

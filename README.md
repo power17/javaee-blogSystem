@@ -10,3 +10,4 @@
 2.1、引入静态文件
 2.2、安装jrebel进行热部署
 3、登陆
+3.1、到数据库查找字段：建立loginAction=>loginService=>UserDao查询数据库=>User
