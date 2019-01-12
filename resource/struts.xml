@@ -10,7 +10,8 @@
         <action name="loginAction_*" class="loginAction" method="{1}">
             <result name="login">/mgr_login.jsp</result>
             <result name="success" type="redirect">/mgr_index.jsp</result>
-            <allowed-methods>login</allowed-methods>
+            <result name="login_out" type="redirect">/mgr_login.jsp</result>
+            <allowed-methods>login,loginout</allowed-methods>
         </action>
 
     </package>

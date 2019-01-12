@@ -19,13 +19,11 @@ public class LoginAction extends ActionSupport implements ModelDriven<User>{
     public void setLoginService(LoginService loginService) {
         this.loginService = loginService;
     }
-
-
+    //登陆
     public String login(){
         System.out.println("login来了");
         System.out.println(user);
         User resUser = loginService.login(user);
-        System.out.println(resUser +"~~~");
         if(resUser == null){
             this.addActionError("用户名或密码错误");
             return LOGIN;
@@ -36,6 +34,15 @@ public class LoginAction extends ActionSupport implements ModelDriven<User>{
             return SUCCESS;
         }
     }
+    //退出
+    public String loginout(){
+        //清除session
+        ActionContext.getContext().getSession().remove("curUser");
+        System.out.println("刚刚有人退出系统");
+
+        return "login_out";
+    }
+
 
 
 }
