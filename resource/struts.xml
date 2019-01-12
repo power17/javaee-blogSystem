@@ -14,6 +14,7 @@
             <allowed-methods>login,loginout</allowed-methods>
         </action>
         <action name="category_*" class="categoryAction" method="{1}">
+            <result name="list">/mgr_category.jsp</result>
             <allowed-methods>add,list</allowed-methods>
         </action>
 

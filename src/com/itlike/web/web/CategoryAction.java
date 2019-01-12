@@ -2,6 +2,7 @@ package com.itlike.web.web;
 
 import com.itlike.web.domain.Category;
 import com.itlike.web.service.CategoryService;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import lombok.Setter;
@@ -25,7 +26,8 @@ public class CategoryAction extends ActionSupport implements ModelDriven<Categor
     public String list(){
         System.out.println("listAction");
         List<Category> list = categoryService.getAllCategory();
-        System.out.println(list);
-        return null;
+        //把数据存在值栈中
+        ActionContext.getContext().getValueStack().set("categorylist",list);
+        return "list";
     }
 }

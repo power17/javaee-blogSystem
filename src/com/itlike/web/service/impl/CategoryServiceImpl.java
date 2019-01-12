@@ -3,6 +3,7 @@ package com.itlike.web.service.impl;
 import com.itlike.web.dao.CategoryDao;
 import com.itlike.web.domain.Category;
 import com.itlike.web.service.CategoryService;
+import com.opensymphony.xwork2.ActionContext;
 import lombok.Setter;
 import org.springframework.transaction.annotation.Transactional;
 
