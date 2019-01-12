@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,18 +33,25 @@
 
 <div class="goods_list" id="account_List">
     <ul class="title_ul">
-        <li>序号</li>
+        <li>parentid</li>
         <li>分类名称</li>
         <li>修改分类</li>
         <li>删除分类</li>
     </ul>
 
-    <ul class="list_goods_ul">
-        <li>01</li>
-        <li>分类名称</li>
-        <li><a href="#"><img class="img_icon" src="images/edit_icon.png" alt=""></a></li>
-        <li><a href="#"><img class="img_icon" src="images/delete_icon.png" alt=""></a></li>
-    </ul>
+
+    <s:iterator value="categorylist" var="category">
+        <ul class="list_goods_ul">
+            <li><s:property value="#category.parentid"/> </li>
+            <li><s:property value="#category.cname"/></li>
+            <li><a href="#"><img class="img_icon" src="images/edit_icon.png" alt=""></a></li>
+            <li><a href="#"><img class="img_icon" src="images/delete_icon.png" alt=""></a></li>
+        </ul>
+    </s:iterator>
+
+
+
+
 
 </div>
 
@@ -52,7 +60,7 @@
 
 </div>
 
-<div id="modal_content">
+<div id="modal_content" style="height: 250px">
     <div id="close"><img src="images/delete_icon.png" alt=""></div>
     <div class="edit_content">
 
@@ -61,16 +69,18 @@
                 <span>添加分类：</span>
             </div>
         </div>
-        <div class="item1">
+        <div class="item1" >
             <div>
+                <span>parentid：</span>
+                <input type="text" class="am-form-field" id="parentid" >&nbsp;&nbsp;
+                <br/>
                 <span>分类名称：</span>
-                <input type="text" class="am-form-field" >&nbsp;&nbsp;
+                <input type="text" class="am-form-field" id="cname" >&nbsp;&nbsp;
+                <br/>
+                <button class="am-btn am-btn-default" type="button" id="addcategory">添加</button>
             </div>
         </div>
-        <div class="item1">
-            <button class="am-btn am-btn-default" type="button" >添加</button>
-        </div>
-        
+
     </div>
 </div>
 
@@ -85,6 +95,20 @@
             $("#modal_view").fadeOut();
             $("#modal_content").fadeOut();
         });
+
+        /*监听添加按钮点击*/
+        $("#addcategory").click(function () {
+            /*获取文本框的内容*/
+            var parentid = $("#parentid").val();
+            var cname = $("#cname").val();
+
+            /*发送请求*/
+            $(window).attr('location','${pageContext.request.contextPath}/category_add.action?parentid='+parentid+'&cname='+cname);
+
+        });
+
+
+
     });
 </script>
 </body>

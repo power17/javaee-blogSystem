@@ -1,4 +1,4 @@
-package com.itlike.web;
+package com.itlike.web.web;
 
 import com.itlike.web.domain.User;
 import com.itlike.web.service.LoginService;

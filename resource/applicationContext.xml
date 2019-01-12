@@ -17,7 +17,7 @@
     <!--导入hibernate相关配置-->
     <import resource="hibernateApplication.xml"/>
 
-    <bean name="loginAction" class="com.itlike.web.LoginAction" scope="prototype">
+    <bean name="loginAction" class="com.itlike.web.web.LoginAction" scope="prototype">
         <property name="loginService" ref="loginService"></property>
     </bean>
 
@@ -27,5 +27,8 @@
      <bean id="userDao" class="com.itlike.web.dao.impl.UserDaoimpl">
          <property name="sessionFactory" ref="sessionFactory"></property>
      </bean>
+    <bean id="categoryAction" class="com.itlike.web.web.CategoryAction" scope="prototype">
+
+    </bean>
 
 </beans>
