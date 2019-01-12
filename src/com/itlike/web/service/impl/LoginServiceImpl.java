@@ -10,9 +10,10 @@ public class LoginServiceImpl implements LoginService {
         this.userDao = userDao;
     }
     @Override
-    public void login(User user) {
+    public User login(User user) {
         System.out.println("用户名" + user.getUsername());
         //调用dao查询用户
-        userDao.getUser(user.getUsername(),user.getPassword());
+        return userDao.getUser(user.getUsername(),user.getPassword());
+
     }
 }

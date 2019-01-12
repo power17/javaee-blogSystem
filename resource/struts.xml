@@ -8,6 +8,8 @@
     <package name="struts" extends="struts-default">
         <!--loginAciton_login.action-->
         <action name="loginAction_*" class="loginAction" method="{1}">
+            <result name="login">/mgr_login.jsp</result>
+            <result name="success" type="redirect">/mgr_index.jsp</result>
             <allowed-methods>login</allowed-methods>
         </action>
 

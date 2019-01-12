@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
@@ -15,7 +16,9 @@
 			
 			<form action="${pageContext.request.contextPath}/loginAction_login.action" id="login_form">
 				<div class="login">博客后台管理系统
-				 <!--  <span style="color:red">用户名密码错</span> -->
+				  <span style="color:red">
+					  <s:actionerror></s:actionerror>
+				  </span>
 				</div>
 				<div class="username-text">用户名:</div>
 				<div class="password-text">密码:</div>
@@ -23,7 +26,7 @@
 					<input type="text" name="username" value="myxq" />
 				</div>
 				<div class="password-field">
-					<input type="password" name="password" value="1234" />
+					<input type="password" name="password" value="124" />
 				</div>
 				<input type="checkbox" name="remember-me" id="remember-me" />
 				<label for="remember-me">记住用户名</label>

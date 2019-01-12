@@ -20,15 +20,12 @@ public class UserDaoimpl extends HibernateDaoSupport implements UserDao {
         detachedCriteria.add(Restrictions.eq("username",username));
         detachedCriteria.add(Restrictions.eq("password",password));
 
-        System.out.println(detachedCriteria);
         //找出来放在user对象
         List<User> list = (List<User>) this.getHibernateTemplate().findByCriteria(detachedCriteria);
-
-        System.out.println(list);
-
-
-
-
+        if(list.size()>0){
+            return list.get(0);
+        }
         return null;
+
     }
 }
