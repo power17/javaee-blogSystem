@@ -28,7 +28,13 @@
          <property name="sessionFactory" ref="sessionFactory"></property>
      </bean>
     <bean id="categoryAction" class="com.itlike.web.web.CategoryAction" scope="prototype">
-
+        <property name="categoryService" ref="categoryService"></property>
     </bean>
+    <bean id="categoryService" class="com.itlike.web.service.impl.CategoryServiceImpl">
+        <property name="categoryDao" ref="categoryDao"></property>
+    </bean>
+    <bean id="categoryDao" class="com.itlike.web.dao.impl.CategoryDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+     </bean>
 
 </beans>

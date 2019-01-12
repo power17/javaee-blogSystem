@@ -3,7 +3,9 @@ package com.itlike.web.service.impl;
 import com.itlike.web.dao.UserDao;
 import com.itlike.web.service.LoginService;
 import com.itlike.web.domain.User;
+import org.springframework.transaction.annotation.Transactional;
 
+@Transactional
 public class LoginServiceImpl implements LoginService {
     private UserDao userDao;
     public void setUserDao(UserDao userDao){

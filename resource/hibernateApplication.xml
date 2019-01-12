@@ -42,6 +42,7 @@
         <property name="mappingResources">
             <list>
                 <value>com/itlike/web/domain/User.hbm.xml</value>
+                <value>com/itlike/web/domain/Category.hbm.xml</value>
             </list>
         </property>
     </bean>
