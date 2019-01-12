@@ -14,7 +14,7 @@
             <allowed-methods>login,loginout</allowed-methods>
         </action>
         <action name="category_*" class="categoryAction" method="{1}">
-            <allowed-methods>add</allowed-methods>
+            <allowed-methods>add,list</allowed-methods>
         </action>
 
     </package>

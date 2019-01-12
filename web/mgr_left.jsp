@@ -79,7 +79,7 @@
 <body style="background:#283643;">
 
 <ul>
-    <li><a href="mgr_category.jsp" target="mainFrame"><i></i>分类管理</a></li>
+    <li><a href="${pageContext.request.contextPath}/category_list.action" target="mainFrame"><i></i>分类管理</a></li>
     <li><a href="mgr_main.jsp" target="mainFrame"><i></i>文章管理</a></li>
     <li></i><a href="mgr_account.jsp" target="mainFrame"><i></i>用户管理</a></li>
 </ul>
