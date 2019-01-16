@@ -8,4 +8,6 @@ public interface CategoryService {
     public void save (Category category);
 
     List<Category> getAllCategory();
+
+    Category getOneCategory(Integer cid);
 }

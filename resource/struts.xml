@@ -13,9 +13,14 @@
             <result name="login_out" type="redirect">/mgr_login.jsp</result>
             <allowed-methods>login,loginout</allowed-methods>
         </action>
-        <action name="category_*" class="categoryAction" method="{1}">
+        <action name="category_*" method="{1}" class="categoryAction">
+
             <result name="list">/mgr_category.jsp</result>
-            <allowed-methods>add,list</allowed-methods>
+
+            <result name="listAction" type="redirectAction">category_list.action</result>
+
+            <allowed-methods>add,list,updateUI,update</allowed-methods>
+
         </action>
 
     </package>

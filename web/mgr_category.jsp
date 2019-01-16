@@ -10,6 +10,25 @@
     <link rel="stylesheet" href="css/amazeui.min.css" />
     <link rel="stylesheet" href="js/pageStyle.css">
     <script src="js/jquery.min.js"></script>
+    <style>
+        #modal_content2{
+            padding: 30px 20px;
+            width: 400px;
+            height: 200px;
+            background: white;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            margin-left: -200px;
+            margin-top: -100px;
+            display: none;
+        }
+        #close2{
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+    </style>
 </head>
 <body>
 
@@ -32,6 +51,7 @@
 </div>
 
 <div class="goods_list" id="account_List">
+
     <ul class="title_ul">
         <li>parentid</li>
         <li>分类名称</li>
@@ -44,14 +64,14 @@
         <ul class="list_goods_ul">
             <li><s:property value="#category.parentid"/> </li>
             <li><s:property value="#category.cname"/></li>
-            <li><a href="#"><img class="img_icon" src="images/edit_icon.png" alt=""></a></li>
+            <li>
+                <a href="#" class="updatebtn" data-id="<s:property value="#category.cid"/>">
+                    <img class="img_icon" src="images/edit_icon.png" alt="">
+                </a>
+            </li>
             <li><a href="#"><img class="img_icon" src="images/delete_icon.png" alt=""></a></li>
         </ul>
     </s:iterator>
-
-
-
-
 
 </div>
 
@@ -84,6 +104,30 @@
     </div>
 </div>
 
+<div id="modal_content2" style="height: 250px; display: none">
+    <div id="close2"><img src="images/delete_icon.png" alt=""></div>
+    <div class="edit_content">
+        <div class="item1">
+            <div>
+                <span>添加分类：</span>
+            </div>
+        </div>
+        <div class="item1" >
+            <div>
+                <span>parentid：</span>
+                <input type="text" class="am-form-field" id="parentid2" >&nbsp;&nbsp;
+                <br/>
+                <span>分类名称：</span>
+                <input type="text" class="am-form-field" id="cname2" >&nbsp;&nbsp;
+                <br/>
+                <input type="hidden" id="cid2">
+                <button class="am-btn am-btn-default" type="button" id="updatebtn">修改</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <script>
     $(function () {
         $('#add').click(function () {
@@ -96,6 +140,10 @@
             $("#modal_content").fadeOut();
         });
 
+
+
+
+
         /*监听添加按钮点击*/
         $("#addcategory").click(function () {
             /*获取文本框的内容*/
@@ -105,6 +153,27 @@
             /*发送请求*/
             $(window).attr('location','${pageContext.request.contextPath}/category_add.action?parentid='+parentid+'&cname='+cname);
 
+        });
+        $(".updatebtn").click(function () {
+            //发送数据
+           var cid =  $(this).data("id");
+           $.post("${pageContext.request.contextPath}/category_updateUI.action",{"cid":cid},function (data) {
+               console.log(data);
+               //把数据展示到修改文本上
+               $('#parentid2').val(data[0].parentid);
+               $('#cname2').val(data[0].cname);
+           },"json");
+
+
+
+
+
+            $("#modal_view").fadeIn();
+            $("#modal_content2").fadeIn();
+        });
+        $("#close2").click(function () {
+            $("#modal_view").fadeOut();
+            $("#modal_content2").fadeOut();
         });
 
 
