@@ -37,4 +37,10 @@ public class CategoryDaoImpl extends HibernateDaoSupport implements CategoryDao 
         }
         return null;
     }
+
+    @Override
+    public void update(Category category) {
+        System.out.println(category);
+        this.getHibernateTemplate().update(category);
+    }
 }

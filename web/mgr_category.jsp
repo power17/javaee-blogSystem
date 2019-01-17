@@ -104,7 +104,7 @@
     </div>
 </div>
 
-<div id="modal_content2" style="height: 250px; display: none">
+<div id="modal_content2" style="height: 250px;display: none">
     <div id="close2"><img src="images/delete_icon.png" alt=""></div>
     <div class="edit_content">
         <div class="item1">
@@ -158,10 +158,11 @@
             //发送数据
            var cid =  $(this).data("id");
            $.post("${pageContext.request.contextPath}/category_updateUI.action",{"cid":cid},function (data) {
-               console.log(data);
+               console.log(data[0]);
                //把数据展示到修改文本上
                $('#parentid2').val(data[0].parentid);
                $('#cname2').val(data[0].cname);
+               $('#cid2').val(data[0].cid);
            },"json");
 
 
@@ -175,6 +176,17 @@
             $("#modal_view").fadeOut();
             $("#modal_content2").fadeOut();
         });
+        
+        $('#updatebtn').on('click',function () {
+            var parentid2 = $('#parentid2').val();
+            var cname2 = $('#cname2').val();
+            var cid2 = $('#cid2').val();
+            console.log(cid2);
+
+            /*发送请求*/
+            $(window).attr('location','${pageContext.request.contextPath}/category_update.action?parentid='+parentid2+'&cname='+cname2+'&cid=' + cid2);
+
+        })
 
 
 

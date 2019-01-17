@@ -10,4 +10,6 @@ public interface CategoryDao {
     List<Category> getAllCategory();
     //根据id查询
     Category getOneCategory(Integer cid);
+
+    void update(Category category);
 }

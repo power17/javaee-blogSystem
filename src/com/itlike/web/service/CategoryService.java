@@ -10,4 +10,6 @@ public interface CategoryService {
     List<Category> getAllCategory();
 
     Category getOneCategory(Integer cid);
+   /*修改分页*/
+    void update(Category category);
 }

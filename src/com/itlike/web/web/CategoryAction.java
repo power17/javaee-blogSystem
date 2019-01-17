@@ -58,4 +58,11 @@ public class CategoryAction extends ActionSupport implements ModelDriven<Categor
         return null;
     }
 
+    public String update(){
+        System.out.println("update~~~");
+        //调用业务层
+        categoryService.update(category);
+        return "listAction";
+    }
+
 }
