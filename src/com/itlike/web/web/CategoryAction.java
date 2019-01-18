@@ -24,13 +24,13 @@ public class CategoryAction extends ActionSupport implements ModelDriven<Categor
     @Setter
     private CategoryService categoryService;
 
-    //分类管理新增接口
+    //分类管理新增接口（增加）
     public String add(){
         System.out.println("categoryAction");
         categoryService.save(category);
-        return null;
+        return "listAction";
     }
-    //分类管理列表接口
+    //分类管理列表接口（查所有数据）
     public String list(){
 
         System.out.println("listAction");
@@ -39,7 +39,7 @@ public class CategoryAction extends ActionSupport implements ModelDriven<Categor
         ActionContext.getContext().getValueStack().set("categorylist",list);
         return "list";
     }
-
+    //点击分类管理修改按钮ajax接口（查询一条数据）
     public String updateUI() throws IOException {
         System.out.println("updateUIAction");
         System.out.println(category.getCid());
@@ -57,11 +57,16 @@ public class CategoryAction extends ActionSupport implements ModelDriven<Categor
 
         return null;
     }
-
+    //分类管理列表接口（修改）
     public String update(){
         System.out.println("update~~~");
         //调用业务层
         categoryService.update(category);
+        return "listAction";
+    }
+
+    public String delete(){
+        categoryService.delete(category);
         return "listAction";
     }
 

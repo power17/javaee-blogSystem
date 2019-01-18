@@ -43,4 +43,9 @@ public class CategoryDaoImpl extends HibernateDaoSupport implements CategoryDao 
         System.out.println(category);
         this.getHibernateTemplate().update(category);
     }
+
+    @Override
+    public void delete(Category category) {
+        this.getHibernateTemplate().delete(category);
+    }
 }

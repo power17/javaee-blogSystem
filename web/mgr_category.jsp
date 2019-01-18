@@ -69,7 +69,7 @@
                     <img class="img_icon" src="images/edit_icon.png" alt="">
                 </a>
             </li>
-            <li><a href="#"><img class="img_icon" src="images/delete_icon.png" alt=""></a></li>
+            <li><a href="${pageContext.request.contextPath}/category_delete.action?cid=<s:property value="#category.cid"/>"><img class="img_icon" src="images/delete_icon.png" alt=""></a></li>
         </ul>
     </s:iterator>
 

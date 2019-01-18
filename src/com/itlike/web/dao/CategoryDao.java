@@ -12,4 +12,6 @@ public interface CategoryDao {
     Category getOneCategory(Integer cid);
 
     void update(Category category);
+    //删除分类
+    void delete(Category category);
 }

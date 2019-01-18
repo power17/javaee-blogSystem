@@ -19,7 +19,7 @@
 
             <result name="listAction" type="redirectAction">category_list.action</result>
 
-            <allowed-methods>add,list,updateUI,update</allowed-methods>
+            <allowed-methods>add,list,updateUI,update,delete</allowed-methods>
 
         </action>
 
