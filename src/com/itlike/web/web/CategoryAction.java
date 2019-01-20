@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class CategoryAction extends ActionSupport implements ModelDriven<Category> {
+
     private Category category = new Category();
     @Override
     public Category getModel() {

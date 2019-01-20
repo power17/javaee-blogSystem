@@ -22,6 +22,11 @@
             <allowed-methods>add,list,updateUI,update,delete</allowed-methods>
 
         </action>
+        <!--文章-->
+        <action name="article_*" method="{1}" class="articleAction">
+            <result name="list">/mgr_main.jsp</result>
+            <allowed-methods>list</allowed-methods>
+        </action>
 
     </package>
 

@@ -5,6 +5,16 @@
          version="4.0">
 
 
+
+    <!--配置延迟加载-->
+    <filter>
+        <filter-name>OpenSessionInViewFilter</filter-name>
+        <filter-class>org.springframework.orm.hibernate5.support.OpenSessionInViewFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>OpenSessionInViewFilter</filter-name>
+        <url-pattern>*.action</url-pattern>
+    </filter-mapping>
     <!--核心过滤器-->
     <filter>
         <filter-name>struts2</filter-name>

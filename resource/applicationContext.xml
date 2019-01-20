@@ -36,5 +36,15 @@
     <bean id="categoryDao" class="com.itlike.web.dao.impl.CategoryDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"></property>
      </bean>
+    <!--文章-->
+    <bean id="articleAction" class="com.itlike.web.web.ArticleAction" scope="prototype">
+        <property name="articleService" ref="articleService"></property>
+    </bean>
+    <bean id="articleService" class="com.itlike.web.service.impl.ArticleServiceImpl">
+        <property name="articleDao" ref="articleDao"></property>
+    </bean>
+    <bean id="articleDao" class="com.itlike.web.dao.impl.ArticleDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
 
 </beans>
