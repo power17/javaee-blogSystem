@@ -25,7 +25,7 @@
         <!--文章-->
         <action name="article_*" method="{1}" class="articleAction">
             <result name="list">/mgr_main.jsp</result>
-            <allowed-methods>list</allowed-methods>
+            <allowed-methods>list,pageList</allowed-methods>
         </action>
 
     </package>

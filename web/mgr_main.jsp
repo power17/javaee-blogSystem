@@ -77,7 +77,7 @@
 </div>
 
 <script src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/paging.js"></script>
+<script type="text/javascript" src="./js/paging.js"></script>
 <script>
     
     //分页
@@ -86,8 +86,7 @@
         totalPage: 5,
         totalSize: 3,
         callback: function(num) {
-          /*  $(window).attr('location','/article_list.action?currPage='+num);*/
-            alert(num);
+            $(window).attr('location','/article_pageList.action?currPage='+num);
         }
     });
 
