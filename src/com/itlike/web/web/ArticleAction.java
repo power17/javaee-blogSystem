@@ -31,7 +31,9 @@ public class ArticleAction extends ActionSupport {
         DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Article.class);
         //调用业务层
         PageBean pageBean =articleService.getPageData(detachedCriteria,currPage,5);
-        return null;
+        //数据存入值栈中
+        ActionContext.getContext().getValueStack().push(pageBean);
+        return "list";
     }
 
 }

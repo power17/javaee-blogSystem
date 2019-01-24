@@ -56,14 +56,14 @@
         <li>删除</li>
     </ul>
 
-    <s:iterator value="allActicle" var="article">
+    <s:iterator value="list" var="article">
         <ul class="list_goods_ul">
             <li><s:property value="#article.article_id"></s:property> </li>
             <li><s:property value="#article.article_title"></s:property></li>
             <li><s:property value="#article.category.cname"></s:property></li>
             <li>
                 <a href="#">
-                <img class="img_icon" src="${ctx }/images/edit_icon.png" alt=""></a>
+                    <img class="img_icon" src="${ctx }/images/edit_icon.png" alt=""></a>
             </li>
             <li>
                 <a href="#">
@@ -82,9 +82,9 @@
     
     //分页
     $("#page").paging({
-        pageNo:1,
-        totalPage: 5,
-        totalSize: 3,
+        pageNo:<s:property value="currentPage"></s:property> ,
+        totalPage: <s:property value="totalPage"></s:property>,
+        totalSize: <s:property value="totalCount"></s:property>,
         callback: function(num) {
             $(window).attr('location','/article_pageList.action?currPage='+num);
         }

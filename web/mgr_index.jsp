@@ -20,7 +20,7 @@ scrolling：是否有滚动条
     <frame src="mgr_top.jsp" name="topFrame" scrolling="NO" noresize>
     <frameset cols="250,*" frameborder="0" border="0"  framespacing="10">
         <frame src="mgr_left.jsp" name="leftFrame"  scrolling="NO">
-        <frame src="${pageContext.request.contextPath}/article_list.action" name="mainFrame" >
+        <frame src="${pageContext.request.contextPath}/article_pageList.action" name="mainFrame" >
     </frameset>
 </frameset>
 
