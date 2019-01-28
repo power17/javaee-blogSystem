@@ -7,6 +7,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import lombok.Setter;
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 
@@ -26,9 +27,19 @@ public class ArticleAction extends ActionSupport {
     /*获取分页数据*/
     @Setter
     private Integer currPage = 1;
+    @Setter
+    //搜索关键字
+    private String keyWord;
     public String pageList(){
         System.out.println(currPage);
+        System.out.println(keyWord);
+        //离线查询条件()
         DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Article.class);
+        //设置条件
+        if(keyWord != null){
+            //添加条件
+            detachedCriteria.add(Restrictions.like("article_title","%"+keyWord+"%"));
+        }
         //调用业务层
         PageBean pageBean =articleService.getPageData(detachedCriteria,currPage,5);
         //数据存入值栈中

@@ -38,7 +38,7 @@
         </div>
         <div class="am-u-sm-12 am-u-md-3">
             <div class="am-input-group am-input-group-sm">
-                <input type="text" class="am-form-field" id="input_search">
+                <input type="text" class="am-form-field" id="input_search" value="<s:property value="#parameters.keyWord"></s:property>">
                 <span class="am-input-group-btn">
                     <button class="am-btn am-btn-default" type="button" id="input_search_btn">搜索</button>
                 </span>
@@ -86,13 +86,22 @@
         totalPage: <s:property value="totalPage"></s:property>,
         totalSize: <s:property value="totalCount"></s:property>,
         callback: function(num) {
-            $(window).attr('location','/article_pageList.action?currPage='+num);
+            var keyWord = $('#input_search').val();
+            $(window).attr('location','/article_pageList.action?currPage='+num + '&keyWord=' + keyWord);
         }
     });
 
     $("#add").click(function () {
         alert("aaa");
         $(window).attr('location','${ctx }/mgr_add_article.jsp');
+    });
+
+    //搜索
+    $('#input_search_btn').click(function () {
+        var keyWord = $('#input_search').val();
+        //发送请求
+        $(window).attr('location','/article_pageList.action?keyWord='+keyWord);
+
     });
 </script>
 
