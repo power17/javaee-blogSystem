@@ -25,7 +25,8 @@
         <!--文章-->
         <action name="article_*" method="{1}" class="articleAction">
             <result name="list">/mgr_main.jsp</result>
-            <allowed-methods>list,pageList</allowed-methods>
+            <result name="delete" type="redirectAction">article_pageList.action</result>
+            <allowed-methods>list,pageList,delete</allowed-methods>
         </action>
 
     </package>

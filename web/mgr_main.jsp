@@ -66,7 +66,7 @@
                     <img class="img_icon" src="${ctx }/images/edit_icon.png" alt=""></a>
             </li>
             <li>
-                <a href="#">
+                <a href="${ctx}/article_delete.action?article_id=<s:property value="#article.article_id"></s:property>">
                     <img class="img_icon" src="${ctx }/images/delete_icon.png" alt="">
                 </a>
             </li>

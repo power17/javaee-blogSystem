@@ -13,4 +13,6 @@ public interface ArticleDao {
     //查询分页的数据
     List<Article> getPageData(DetachedCriteria detachedCriteria, Integer index, Integer pageSize);
 
+    void delete(Article article);
+
 }

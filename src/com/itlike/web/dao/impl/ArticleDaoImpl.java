@@ -6,9 +6,10 @@ import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.Projections;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
+@Transactional
 public class ArticleDaoImpl extends HibernateDaoSupport implements ArticleDao {
 
     @Override
@@ -42,11 +43,10 @@ public class ArticleDaoImpl extends HibernateDaoSupport implements ArticleDao {
 
     }
 
-
-
-
-
-
+    @Override
+    public void delete(Article article) {
+        this.getHibernateTemplate().delete(article);
+    }
 
 
 }

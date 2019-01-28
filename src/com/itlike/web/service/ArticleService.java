@@ -12,5 +12,8 @@ public interface ArticleService {
 
     PageBean getPageData(DetachedCriteria detachedCriteria, Integer currPage, int i);
 
+
+
+    void delete(Article article);
 }
 

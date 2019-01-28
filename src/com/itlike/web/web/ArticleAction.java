@@ -47,6 +47,17 @@ public class ArticleAction extends ActionSupport {
         return "list";
     }
 
+    //删除功能
+    @Setter
+    private Integer article_id;
+    public String delete(){
+        Article article = new Article();
+        article.setArticle_id(article_id);
+        articleService.delete(article);
+
+        return "delete";
+    }
+
 }
 
 

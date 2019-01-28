@@ -41,4 +41,11 @@ public class ArticleServiceImpl implements ArticleService {
 
 
     }
+
+    @Override
+    public void delete(Article article) {
+       articleDao.delete(article);
+    }
+
+
 }
