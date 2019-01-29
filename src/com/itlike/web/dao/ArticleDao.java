@@ -1,6 +1,7 @@
 package com.itlike.web.dao;
 
 import com.itlike.web.domain.Article;
+import com.itlike.web.domain.Category;
 import org.hibernate.criterion.DetachedCriteria;
 
 import java.util.List;
@@ -14,5 +15,7 @@ public interface ArticleDao {
     List<Article> getPageData(DetachedCriteria detachedCriteria, Integer index, Integer pageSize);
 
     void delete(Article article);
+
+    List<Category> getCategory(Integer parentid);
 
 }

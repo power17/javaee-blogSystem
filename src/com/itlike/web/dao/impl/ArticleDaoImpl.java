@@ -2,9 +2,11 @@ package com.itlike.web.dao.impl;
 
 import com.itlike.web.dao.ArticleDao;
 import com.itlike.web.domain.Article;
+import com.itlike.web.domain.Category;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -46,6 +48,17 @@ public class ArticleDaoImpl extends HibernateDaoSupport implements ArticleDao {
     @Override
     public void delete(Article article) {
         this.getHibernateTemplate().delete(article);
+    }
+
+    @Override
+    public List<Category> getCategory(Integer parentid) {
+        DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Category.class);
+        detachedCriteria.add(Restrictions.eq("parentid",parentid));
+        List<Category> list = (List<Category>)this.getHibernateTemplate().findByCriteria(detachedCriteria);
+
+        return list;
+
+
     }
 
 

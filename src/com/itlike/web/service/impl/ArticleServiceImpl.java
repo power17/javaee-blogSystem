@@ -2,6 +2,7 @@ package com.itlike.web.service.impl;
 
 import com.itlike.web.dao.ArticleDao;
 import com.itlike.web.domain.Article;
+import com.itlike.web.domain.Category;
 import com.itlike.web.domain.PageBean;
 import com.itlike.web.service.ArticleService;
 import lombok.Setter;
@@ -45,6 +46,12 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public void delete(Article article) {
        articleDao.delete(article);
+    }
+
+    @Override
+    public List<Category> getCategory(Integer parentid) {
+        List<Category> list = articleDao.getCategory(parentid);
+        return list;
     }
 
 

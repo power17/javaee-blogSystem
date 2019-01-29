@@ -92,7 +92,7 @@
     });
 
     $("#add").click(function () {
-        alert("aaa");
+
         $(window).attr('location','${ctx }/mgr_add_article.jsp');
     });
 

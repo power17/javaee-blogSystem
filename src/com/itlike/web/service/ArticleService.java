@@ -1,6 +1,7 @@
 package com.itlike.web.service;
 
 import com.itlike.web.domain.Article;
+import com.itlike.web.domain.Category;
 import com.itlike.web.domain.PageBean;
 import org.hibernate.criterion.DetachedCriteria;
 
@@ -15,5 +16,7 @@ public interface ArticleService {
 
 
     void delete(Article article);
+    //获取目录
+    List<Category> getCategory(Integer parentid);
 }
 

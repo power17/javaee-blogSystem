@@ -37,11 +37,11 @@
             <div class="item1">
                 <span>所属分类：</span>
                     <select id="category_select" name="bclass.cid" style="width: 150px">&nbsp;&nbsp;
-                        　<option value="aaa">aaa</option>
+
                     </select>
 
                 <select id="skill_select" name="skill.sid" style="width: 150px">&nbsp;&nbsp;
-                    <option value="aaa">aa</option>
+
                 </select>
 
             </div>
@@ -61,6 +61,35 @@
     </form>
 
 </div>
+<script>
+    $(function () {
+        //发送请求获取分类的数据
+        $.post("${pageContext.request.contextPath}/article_getCategory.action",{"parentid":12},function (data) {
+
+            $(data).each(function (i,obj) {
+                $("#category_select").append("<option value="+obj.cid+">"+obj.cname+"</option>");
+            });
+            $("#category_select").trigger("change");
+        },"json");
+
+
+
+        //监听select改变
+        $("#category_select").on('change',function () {
+            var cid = $("#category_select").val();
+            $.post("${pageContext.request.contextPath}/article_getCategory.action",{"parentid":cid},function (data) {
+                console.log(data);
+
+                $("#skill_select").empty();
+                $(data).each(function (i,obj) {
+                    $("#skill_select").append("<option value="+obj.cid+">"+obj.cname+"</option>");
+                })
+            },"json");
+        });
+
+
+    });
+</script>
 
 </body>
 </html>
