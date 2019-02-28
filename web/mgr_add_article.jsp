@@ -87,6 +87,24 @@
             },"json");
         });
 
+        //上传图片路径
+        $('#fileupload').change(function () {
+            var $file = $(this);
+            var objUrl = $file[0].files[0];
+            //获取http格式的url路径
+            var windowURL = windowURL || window.webkitURL;
+            var dataURL;
+            dataURL = windowURL.createObjectURL(objUrl);
+            $("#imageview").attr("src",dataURL);
+            console.log($('#imageview').attr('style'));
+            if($('#imageview').attr('style') === 'display: none;'){
+                $('#imageview').attr('style','inline');
+                $('#imageview').width("300px");
+                $('#imageview').height("200px");
+                $('update_pic').attr('style','margin-bottom:80px;');
+            }
+        });
+
 
     });
 </script>
