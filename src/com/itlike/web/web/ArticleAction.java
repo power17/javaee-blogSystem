@@ -9,12 +9,16 @@ import com.opensymphony.xwork2.ActionSupport;
 import lombok.Setter;
 import net.sf.json.JSONArray;
 import net.sf.json.JsonConfig;
+import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
+import org.aspectj.util.FileUtil;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 public class ArticleAction extends ActionSupport {
     //注入
@@ -76,6 +80,39 @@ public class ArticleAction extends ActionSupport {
         //响应给页面
         ServletActionContext.getResponse().setContentType("text/html:charset=UTF-8");
         ServletActionContext.getResponse().getWriter().println(jsonArray.toString());
+        return null;
+    }
+
+
+    //添加文章
+    @Setter
+    private String uploadFileName;
+    @Setter
+    private File upload;
+    @Setter
+    private String uploadContentType;
+
+    public String add() throws IOException {
+       if(upload != null){
+
+           //随机文件名
+           int idx = uploadFileName.lastIndexOf(".");
+           String extions = uploadFileName.substring(idx);
+           //防止文件重命名
+           String uuidFileName = UUID.randomUUID().toString().replace("-","") + extions;
+           System.out.println(uuidFileName);
+           //设置文件上传路径
+           String path = ServletActionContext.getServletContext().getRealPath("/upload");
+           File file = new File(path);
+           if(!file.exists()){
+               file.mkdirs();
+           }
+
+           //文件上传
+           File dictFile = new File(path + "/" +uuidFileName);
+           FileUtils.copyFile(upload,dictFile);
+
+       }
         return null;
     }
 

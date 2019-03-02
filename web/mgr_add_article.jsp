@@ -22,7 +22,7 @@
         </strong><small></small></div>
     </div>
     <hr>
-    <form id="blog_form" action="#" method=post >
+    <form id="blog_form" action="${ctx}/article_add.action" method="post" enctype="multipart/form-data">
         <div class="edit_content">
             <div class="item1">
                 <div>
@@ -104,6 +104,11 @@
                 $('update_pic').attr('style','margin-bottom:80px;');
             }
         });
+
+        //发布
+        $('#send').click(function () {
+            $('#blog_form').submit();
+        })
 
 
     });
