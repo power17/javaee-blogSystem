@@ -11,6 +11,9 @@
     <title>Title</title>
     <link rel="stylesheet" href="${ctx }/css/style.css" type="text/css" />
     <link rel="stylesheet" href="${ctx }/css/amazeui.min.css" />
+    <script type="text/javascript" charset="utf-8" src="${ctx}/js/umedit/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="${ctx}/js/umedit/ueditor.all.js"></script>
+    <script type="text/javascript" charset="utf-8" src="${ctx}/js/umedit/lang/zh-cn/zh-cn.js"></script>
     <script src="${ctx }/js/jquery.min.js"></script>
 </head>
 <body>
@@ -63,6 +66,8 @@
 </div>
 <script>
     $(function () {
+        //初始化富文本编辑器
+        var ue = UE.getEditor('editor');
         //发送请求获取分类的数据
         $.post("${pageContext.request.contextPath}/article_getCategory.action",{"parentid":12},function (data) {
 

@@ -50,5 +50,6 @@
     <orderEntry type="library" scope="PROVIDED" name="Tomcat 8.5.34" level="application_server_libraries" />
     <orderEntry type="library" name="antlr-2.7.7" level="project" />
     <orderEntry type="library" name="json-lib-2.4-jdk15" level="project" />
+    <orderEntry type="library" name="commons-codec-1.9" level="project" />
   </component>
 </module>

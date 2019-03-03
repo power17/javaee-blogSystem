@@ -26,7 +26,7 @@
 					<input type="text" name="username" value="myxq" />
 				</div>
 				<div class="password-field">
-					<input type="password" name="password" value="124" />
+					<input type="password" name="password" value="1234" />
 				</div>
 				<input type="checkbox" name="remember-me" id="remember-me" />
 				<label for="remember-me">记住用户名</label>
