@@ -39,11 +39,11 @@
 
             <div class="item1">
                 <span>所属分类：</span>
-                    <select id="category_select" name="bclass.cid" style="width: 150px">&nbsp;&nbsp;
+                    <select id="category_select" name="category.parentid" style="width: 150px">&nbsp;&nbsp;
 
                     </select>
 
-                <select id="skill_select" name="skill.sid" style="width: 150px">&nbsp;&nbsp;
+                <select id="skill_select" name="category.cid" style="width: 150px">&nbsp;&nbsp;
 
                 </select>
 
@@ -101,7 +101,6 @@
             var dataURL;
             dataURL = windowURL.createObjectURL(objUrl);
             $("#imageview").attr("src",dataURL);
-            console.log($('#imageview').attr('style'));
             if($('#imageview').attr('style') === 'display: none;'){
                 $('#imageview').attr('style','inline');
                 $('#imageview').width("300px");
@@ -112,6 +111,13 @@
 
         //发布
         $('#send').click(function () {
+            //设置文本的描述
+            //获取文本正文
+            var text = ue.getContentTxt();
+            text = text.substr(0,150) + "...";
+            //设置描述
+            $("#article_desc").val(text);
+
             $('#blog_form').submit();
         })
 

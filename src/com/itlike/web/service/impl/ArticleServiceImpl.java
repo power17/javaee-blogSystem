@@ -55,4 +55,11 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
 
+
+    @Override
+    public void save(Article article ) {
+        articleDao.save(article);
+    }
+
+
 }

@@ -61,5 +61,11 @@ public class ArticleDaoImpl extends HibernateDaoSupport implements ArticleDao {
 
     }
 
+    @Override
+    public void save(Article article) {
+        System.out.println(article);
+        this.getHibernateTemplate().save(article);
+    }
+
 
 }

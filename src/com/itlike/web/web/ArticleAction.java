@@ -6,6 +6,7 @@ import com.itlike.web.domain.PageBean;
 import com.itlike.web.service.ArticleService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
 import lombok.Setter;
 import net.sf.json.JSONArray;
 import net.sf.json.JsonConfig;
@@ -17,10 +18,16 @@ import org.hibernate.criterion.Restrictions;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-public class ArticleAction extends ActionSupport {
+public class ArticleAction extends ActionSupport implements ModelDriven<Article> {
+    private Article article = new Article();
+    @Override
+    public Article getModel( ) {
+        return article;
+    }
     //注入
     @Setter
     private ArticleService articleService;
@@ -57,14 +64,12 @@ public class ArticleAction extends ActionSupport {
     }
 
     //删除功能
-    @Setter
-    private Integer article_id;
     public String delete(){
-        Article article = new Article();
-        article.setArticle_id(article_id);
-        articleService.delete(article);
+        Article article2 = new Article();
+        article2.setArticle_id(article2.getArticle_id());
+        articleService.delete(article2);
 
-        return "delete";
+        return "listres";
     }
 
     //获取目录
@@ -111,10 +116,21 @@ public class ArticleAction extends ActionSupport {
            //文件上传
            File dictFile = new File(path + "/" +uuidFileName);
            FileUtils.copyFile(upload,dictFile);
+           //设置图片
+           article.setArticle_pic(uuidFileName);
 
        }
-        return null;
+       //设置当前时间
+        article.setArticle_time((int) new Date().getTime());
+
+       //保存到数据库中
+        articleService.save(article);
+
+
+
+        return "listres";
     }
+
 
 }
 

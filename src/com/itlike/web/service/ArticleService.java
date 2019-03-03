@@ -18,5 +18,7 @@ public interface ArticleService {
     void delete(Article article);
     //获取目录
     List<Category> getCategory(Integer parentid);
+
+    void save(Article article );
 }
 
