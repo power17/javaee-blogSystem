@@ -25,8 +25,9 @@
         <!--文章-->
         <action name="article_*" method="{1}" class="articleAction">
             <result name="list">/mgr_main.jsp</result>
+            <result name="edit">/mgr_edit_article.jsp</result>
             <result name="listres" type="redirectAction">article_pageList.action</result>
-            <allowed-methods>add,list,pageList,delete,getCategory</allowed-methods>
+            <allowed-methods>add,list,pageList,delete,getCategory,edit</allowed-methods>
         </action>
 
     </package>

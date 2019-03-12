@@ -67,5 +67,17 @@ public class ArticleDaoImpl extends HibernateDaoSupport implements ArticleDao {
         this.getHibernateTemplate().save(article);
     }
 
+    @Override
+    public Article getOneArticle(Integer article_id) {
+        DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Article.class);
+        detachedCriteria.add(Restrictions.eq("article_id",article_id));
+        List<Article> list =(List<Article>) this.getHibernateTemplate().findByCriteria(detachedCriteria);
+        if(list.size()>0){
+            return list.get(0);
+        }
+
+        return null;
+    }
+
 
 }

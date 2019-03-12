@@ -62,7 +62,7 @@
             <li><s:property value="#article.article_title"></s:property></li>
             <li><s:property value="#article.category.cname"></s:property></li>
             <li>
-                <a href="#">
+                <a href="${ctx}/article_edit.action?article_id=<s:property value="#article.article_id"></s:property>">
                     <img class="img_icon" src="${ctx }/images/edit_icon.png" alt=""></a>
             </li>
             <li>

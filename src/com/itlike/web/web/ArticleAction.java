@@ -68,6 +68,8 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
         Article article2 = new Article();
         article2.setArticle_id(article2.getArticle_id());
         articleService.delete(article2);
+        System.out.println(article2.getArticle_id());
+
 
         return "listres";
     }
@@ -129,6 +131,17 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
 
 
         return "listres";
+    }
+    public String edit(){
+        //从数据库中获取当前文章
+        Article resArticle = articleService.getOneArticle(article.getArticle_id());
+        System.out.println(resArticle);
+        //把查询的数据存放在值栈中
+        ActionContext.getContext().getValueStack().push(resArticle);
+        return "edit";
+
+
+
     }
 
 

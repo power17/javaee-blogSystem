@@ -19,4 +19,7 @@ public interface ArticleDao {
     List<Category> getCategory(Integer parentid);
 
     void save(Article article);
+
+    Article getOneArticle(Integer article_id);
+
 }
