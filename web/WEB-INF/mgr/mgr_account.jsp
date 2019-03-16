@@ -5,10 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="css/style.css" type="text/css" />
-    <link rel="stylesheet" href="css/amazeui.min.css" />
+    <link rel="stylesheet" href="../../css/style.css" type="text/css" />
+    <link rel="stylesheet" href="../../css/amazeui.min.css" />
     <link rel="stylesheet" href="js/pageStyle.css">
-    <script src="js/jquery.min.js"></script>
+    <script src="../../js/jquery.min.js"></script>
 </head>
 <body>
 
@@ -40,8 +40,8 @@
     <ul class="list_goods_ul">
         <li>01</li>
         <li>Myxq</li>
-        <li><a href="#"><img class="img_icon" src="images/edit_icon.png" alt=""></a></li>
-        <li><a href="#"><img class="img_icon" src="images/delete_icon.png" alt=""></a></li>
+        <li><a href="#"><img class="img_icon" src="../../images/edit_icon.png" alt=""></a></li>
+        <li><a href="#"><img class="img_icon" src="../../images/delete_icon.png" alt=""></a></li>
     </ul>
 
 </div>
@@ -52,7 +52,7 @@
     </div>
 
 <div id="modal_content_account">
-    <div id="close"><img src="images/delete_icon.png" alt=""></div>
+    <div id="close"><img src="../../images/delete_icon.png" alt=""></div>
     <div class="edit_content">
 
         <div class="item1">

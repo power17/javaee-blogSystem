@@ -76,8 +76,8 @@
     <div id="page" class="page_div"></div>
 </div>
 
-<script src="js/jquery.min.js"></script>
-<script type="text/javascript" src="./js/paging.js"></script>
+<script src="../../js/jquery.min.js"></script>
+<script type="text/javascript" src="../../js/paging.js"></script>
 <script>
     
     //分页
@@ -93,7 +93,7 @@
 
     $("#add").click(function () {
 
-        $(window).attr('location','${ctx }/mgr_add_article.jsp');
+        $(window).attr('location','${ctx }/location_add.action');
     });
 
     //搜索

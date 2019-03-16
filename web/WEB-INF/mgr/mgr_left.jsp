@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="../../css/common.css">
     <style>
         body{
             border-top: 1px solid;
@@ -53,23 +53,23 @@
             top: 8px;
         }
         ul li:nth-child(1) a i{
-            background: url("images/category_icon.png") no-repeat;
+            background: url("../../images/category_icon.png") no-repeat;
         }
         ul li:nth-child(2) a i{
-            background: url("images/goods_icon.png") no-repeat;
+            background: url("../../images/goods_icon.png") no-repeat;
         }
         ul li:nth-child(3) a i{
-            background: url("images/admin_icon.png") no-repeat;
+            background: url("../../images/admin_icon.png") no-repeat;
         }
 
         ul li:nth-child(1) a:hover i{
-            background: url("images/category_hover.png") no-repeat;
+            background: url("../../images/category_hover.png") no-repeat;
         }
         ul li:nth-child(2) a:hover i{
-            background: url("images/goods_hover.png") no-repeat;
+            background: url("../../images/goods_hover.png") no-repeat;
         }
         ul li:nth-child(3) a:hover i{
-            background: url("images/admin_hover.png") no-repeat;
+            background: url("../../images/admin_hover.png") no-repeat;
         }
 
     </style
@@ -81,7 +81,7 @@
 <ul>
     <li><a href="${pageContext.request.contextPath}/category_list.action" target="mainFrame"><i></i>分类管理</a></li>
     <li><a href="${pageContext.request.contextPath}/article_pageList.action" target="mainFrame"><i></i>文章管理</a></li>
-    <li></i><a href="mgr_account.jsp" target="mainFrame"><i></i>用户管理</a></li>
+    <li></i><a href="${pageContext.request.contextPath}/location_account.action" target="mainFrame"><i></i>用户管理</a></li>
 </ul>
 
 </body>

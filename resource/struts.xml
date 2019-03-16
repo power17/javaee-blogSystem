@@ -6,16 +6,23 @@
 <struts>
 
     <package name="struts" extends="struts-default">
+        <action name="location_*" class="locationAction" method="{1}">
+            <result name="left" >/WEB-INF/mgr/mgr_left.jsp</result>
+            <result name="top" >/WEB-INF/mgr/mgr_top.jsp</result>
+            <result name="account" >/WEB-INF/mgr/mgr_account.jsp</result>
+            <result name="add" >/WEB-INF/mgr/mgr_add_article.jsp</result>
+            <allowed-methods>left,top,account,add</allowed-methods>
+        </action>
         <!--loginAciton_login.action-->
         <action name="loginAction_*" class="loginAction" method="{1}">
             <result name="login">/mgr_login.jsp</result>
-            <result name="success" type="redirect">/mgr_index.jsp</result>
+            <result name="success" >/WEB-INF/mgr/mgr_index.jsp</result>
             <result name="login_out" type="redirect">/mgr_login.jsp</result>
             <allowed-methods>login,loginout</allowed-methods>
         </action>
         <action name="category_*" method="{1}" class="categoryAction">
 
-            <result name="list">/mgr_category.jsp</result>
+            <result name="list">/WEB-INF/mgr/mgr_category.jsp</result>
 
             <result name="listAction" type="redirectAction">category_list.action</result>
 
@@ -24,7 +31,7 @@
         </action>
         <!--文章-->
         <action name="article_*" method="{1}" class="articleAction">
-            <result name="list">/mgr_main.jsp</result>
+            <result name="list">/WEB-INF/mgr/mgr_main.jsp</result>
             <result name="edit">/mgr_edit_article.jsp</result>
             <result name="listres" type="redirectAction">article_pageList.action</result>
             <allowed-methods>add,list,pageList,delete,getCategory,edit,update</allowed-methods>

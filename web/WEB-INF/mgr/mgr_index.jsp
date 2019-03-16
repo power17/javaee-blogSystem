@@ -17,9 +17,9 @@ name 链接时， 可以根据名称跳转到指定的窗口显示
 scrolling：是否有滚动条
   -->
 <frameset rows="70,*" frameborder=0 border="0" framespacing="0">
-    <frame src="mgr_top.jsp" name="topFrame" scrolling="NO" noresize>
+    <frame src="${pageContext.request.contextPath}/location_top.action" name="topFrame" scrolling="NO" noresize>
     <frameset cols="250,*" frameborder="0" border="0"  framespacing="10">
-        <frame src="mgr_left.jsp" name="leftFrame"  scrolling="NO">
+        <frame src="${pageContext.request.contextPath}/location_left.action" name="leftFrame" scrolling="NO">
         <frame src="${pageContext.request.contextPath}/article_pageList.action" name="mainFrame" >
     </frameset>
 </frameset>

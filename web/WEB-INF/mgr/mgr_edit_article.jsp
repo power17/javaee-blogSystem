@@ -82,6 +82,8 @@
             $(data).each(function (i,obj) {
                 $("#category_select").append("<option value="+obj.cid+">"+obj.cname+"</option>");
             });
+            $('#category_select option[value=<s:property value="category.parentid"></s:property>]').prop("selected",true);
+
 
         },"json");
 
@@ -95,7 +97,6 @@
                 $("#skill_select").append("<option value="+obj.cid+">"+obj.cname+"</option>");
             });
 
-            $('#category_select option[value=<s:property value="category.parentid"></s:property>]').prop("selected",true);
             $('#skill_select option[value=<s:property value="category.cid"></s:property>]').prop("selected",true);
         },"json");
 

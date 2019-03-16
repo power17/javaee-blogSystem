@@ -6,10 +6,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="css/style.css" type="text/css" />
-    <link rel="stylesheet" href="css/amazeui.min.css" />
+    <link rel="stylesheet" href="../../css/style.css" type="text/css" />
+    <link rel="stylesheet" href="../../css/amazeui.min.css" />
     <link rel="stylesheet" href="js/pageStyle.css">
-    <script src="js/jquery.min.js"></script>
+    <script src="../../js/jquery.min.js"></script>
     <style>
         #modal_content2{
             padding: 30px 20px;
@@ -66,10 +66,10 @@
             <li><s:property value="#category.cname"/></li>
             <li>
                 <a href="#" class="updatebtn" data-id="<s:property value="#category.cid"/>">
-                    <img class="img_icon" src="images/edit_icon.png" alt="">
+                    <img class="img_icon" src="../../images/edit_icon.png" alt="">
                 </a>
             </li>
-            <li><a href="${pageContext.request.contextPath}/category_delete.action?cid=<s:property value="#category.cid"/>"><img class="img_icon" src="images/delete_icon.png" alt=""></a></li>
+            <li><a href="${pageContext.request.contextPath}/category_delete.action?cid=<s:property value="#category.cid"/>"><img class="img_icon" src="../../images/delete_icon.png" alt=""></a></li>
         </ul>
     </s:iterator>
 
@@ -81,7 +81,7 @@
 </div>
 
 <div id="modal_content" style="height: 250px">
-    <div id="close"><img src="images/delete_icon.png" alt=""></div>
+    <div id="close"><img src="../../images/delete_icon.png" alt=""></div>
     <div class="edit_content">
 
         <div class="item1">
@@ -105,7 +105,7 @@
 </div>
 
 <div id="modal_content2" style="height: 250px;display: none">
-    <div id="close2"><img src="images/delete_icon.png" alt=""></div>
+    <div id="close2"><img src="../../images/delete_icon.png" alt=""></div>
     <div class="edit_content">
         <div class="item1">
             <div>

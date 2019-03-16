@@ -46,5 +46,8 @@
     <bean id="articleDao" class="com.itlike.web.dao.impl.ArticleDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
+    <bean id="locationAction" class="com.itlike.web.locationAction" scope="prototype">
+
+    </bean>
 
 </beans>
