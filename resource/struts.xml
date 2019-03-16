@@ -51,7 +51,9 @@
             <result name="list">/WEB-INF/mgr/mgr_main.jsp</result>
             <result name="edit">/mgr_edit_article.jsp</result>
             <result name="listres" type="redirectAction">article_pageList.action</result>
-            <interceptor-ref name="loginInterceptor"></interceptor-ref>
+            <interceptor-ref name="loginInterceptor">
+                <param name="excludeMethods">getCategory</param>
+            </interceptor-ref>
             <interceptor-ref name="defaultStack"></interceptor-ref>
             <allowed-methods>add,list,pageList,delete,getCategory,edit,update</allowed-methods>
         </action>
