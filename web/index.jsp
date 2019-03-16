@@ -113,6 +113,22 @@
         </div>
     </div>
 </footer>
+<script>
+    $.post("${ctx}/web_getPageList.action",function (data) {
+        console.log(data);
+    })
+
+
+    //分页
+    $("#page").paging({
+        pageNo:3 ,
+        totalPage: 4,
+        totalSize: 20,
+        callback: function(num) {
+
+        }
+    });
+</script>
 
 </body>
 </html>

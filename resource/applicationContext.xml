@@ -49,5 +49,9 @@
     <bean id="locationAction" class="com.itlike.web.locationAction" scope="prototype">
 
     </bean>
+    <bean id="webAction" class="com.itlike.web.web.WebAction" scope="prototype">
+        <property name="articleService" ref="articleService"></property>
+    </bean>
+
 
 </beans>

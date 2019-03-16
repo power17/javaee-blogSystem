@@ -57,7 +57,11 @@
             <interceptor-ref name="defaultStack"></interceptor-ref>
             <allowed-methods>add,list,pageList,delete,getCategory,edit,update</allowed-methods>
         </action>
-
+        
+        <!--前端-->
+        <action name="web_*" class="webAction" method="{1}">
+            <allowed-methods>getPageList</allowed-methods>
+        </action>
     </package>
 
 </struts>
