@@ -22,4 +22,6 @@ public interface ArticleDao {
 
     Article getOneArticle(Integer article_id);
 
+    void update(Article article);
+
 }

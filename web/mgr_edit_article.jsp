@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%
@@ -25,12 +26,12 @@
         </strong><small></small></div>
     </div>
     <hr>
-    <form id="blog_form" action="${ctx}/article_add.action" method="post" enctype="multipart/form-data">
+    <form id="blog_form" action="${ctx}/article_update.action" method="post" enctype="multipart/form-data">
         <div class="edit_content">
             <div class="item1">
                 <div>
                     <span>文章标题：</span>
-                    <input type="text" class="am-form-field" name="article_title" style="width: 300px">&nbsp;&nbsp;
+                    <input type="text" class="am-form-field" name="article_title" style="width: 300px" value="<s:property value="article_title"></s:property> ">&nbsp;&nbsp;
                 </div>
             </div>
 
@@ -51,12 +52,15 @@
 
             <div class="item1 update_pic" >
                 <span>摘要图片：</span>
-                <img src="" id="imageview" class="item1_img" style="display: none;" >
+                <img src="${ctx}/upload/<s:property value="article_pic"></s:property> " id="imageview" class="item1_img"  >
                 <label for="fileupload" id="label_file">上传文件</label>
                 <input type="file" name="upload" id="fileupload"/>
             </div>
 
             <div id="editor" name="article_content" style="width:900px;height:400px;"></div>
+            <input type="hidden" id="resContent" value="<s:property value="article_content"></s:property>">
+            <input type="hidden" name="article_id" value="<s:property value="article_id"></s:property>">
+            <input type="hidden" name="article_pic" value="<s:property value="article_pic"></s:property>">
             <button class="am-btn am-btn-default" type="button" id="send" style="margin-top: 10px;">
                 修改</button>
         </div>
@@ -68,13 +72,31 @@
     $(function () {
         //初始化富文本编辑器
         var ue = UE.getEditor('editor');
+        ue.ready(function () {
+           ue.execCommand("inserthtml",$("#resContent").val());
+            
+        });
         //发送请求获取分类的数据
         $.post("${pageContext.request.contextPath}/article_getCategory.action",{"parentid":12},function (data) {
 
             $(data).each(function (i,obj) {
                 $("#category_select").append("<option value="+obj.cid+">"+obj.cname+"</option>");
             });
-            $("#category_select").trigger("change");
+
+        },"json");
+
+        //发送请求获取分类的数据
+        var parentid = <s:property value="category.parentid"></s:property>
+
+        $.post("${pageContext.request.contextPath}/article_getCategory.action",{"parentid":parentid},function (data) {
+
+            $("#skill_select").empty();
+            $(data).each(function (i,obj) {
+                $("#skill_select").append("<option value="+obj.cid+">"+obj.cname+"</option>");
+            });
+
+            $('#category_select option[value=<s:property value="category.parentid"></s:property>]').prop("selected",true);
+            $('#skill_select option[value=<s:property value="category.cid"></s:property>]').prop("selected",true);
         },"json");
 
 
@@ -117,8 +139,8 @@
             text = text.substr(0,150) + "...";
             //设置描述
             $("#article_desc").val(text);
-
             $('#blog_form').submit();
+
         })
 
 

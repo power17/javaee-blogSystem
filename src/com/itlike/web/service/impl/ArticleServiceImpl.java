@@ -68,5 +68,10 @@ public class ArticleServiceImpl implements ArticleService {
         return resArticle;
     }
 
+    @Override
+    public void update(Article article) {
+        articleDao.update(article);
+    }
+
 
 }

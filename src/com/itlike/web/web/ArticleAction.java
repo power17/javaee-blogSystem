@@ -140,8 +140,52 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
         ActionContext.getContext().getValueStack().push(resArticle);
         return "edit";
 
+    }
+
+    //修改文章
+    public String update() throws IOException {
+        if(upload != null){
+            //设置文件上传路径
+            String path = ServletActionContext.getServletContext().getRealPath("/upload");
+            //删除原有图片
+            String picname = article.getArticle_pic();
+
+            if(picname != null || "".equals(picname)){
+                File file = new File(path + picname);
+                file.delete();
+
+            }
 
 
+            //随机文件名
+            int idx = uploadFileName.lastIndexOf(".");
+            String extions = uploadFileName.substring(idx);
+            //防止文件重命名
+            String uuidFileName = UUID.randomUUID().toString().replace("-","") + extions;
+            System.out.println(uuidFileName);
+
+
+            File file = new File(path);
+            if(!file.exists()){
+                file.mkdirs();
+            }
+
+            //文件上传
+            File dictFile = new File(path + "/" +uuidFileName);
+            FileUtils.copyFile(upload,dictFile);
+            //设置图片
+            article.setArticle_pic(uuidFileName);
+
+        }
+
+        //设置时间
+        article.setArticle_time((int) System.currentTimeMillis());
+
+        //调用业务更新文章
+        articleService.update(article);
+
+
+        return "listres";
     }
 
 

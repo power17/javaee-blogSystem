@@ -23,5 +23,7 @@ public interface ArticleService {
 
     Article getOneArticle(Integer article_id);
 
+    void update(Article article);
+
 }
 

@@ -79,5 +79,10 @@ public class ArticleDaoImpl extends HibernateDaoSupport implements ArticleDao {
         return null;
     }
 
+    @Override
+    public void update(Article article) {
+        this.getHibernateTemplate().update(article);
+    }
+
 
 }

@@ -27,7 +27,7 @@
             <result name="list">/mgr_main.jsp</result>
             <result name="edit">/mgr_edit_article.jsp</result>
             <result name="listres" type="redirectAction">article_pageList.action</result>
-            <allowed-methods>add,list,pageList,delete,getCategory,edit</allowed-methods>
+            <allowed-methods>add,list,pageList,delete,getCategory,edit,update</allowed-methods>
         </action>
 
     </package>
