@@ -133,23 +133,46 @@
         });
         return format;
     });
-    $.post("${ctx}/web_getPageList.action",function (data) {
-        console.log(data.list);
+    <%--$.post("${ctx}/web_getPageList.action",function (data) {--%>
+        <%--console.log(data.list);--%>
 
-        var html = template("mytpl",{list:data.list});
-        $('#content').html(html);
-    });
+        <%--var html = template("mytpl",{list:data.list});--%>
+        <%--$('#content').html(html);--%>
+        <%--//分页--%>
+        <%--$("#page").paging({--%>
+            <%--pageNo:data.currentPage,--%>
+            <%--totalPage: data.totalPage,--%>
+            <%--totalSize: data.totalCount,--%>
+            <%--callback: function(num) {--%>
+
+            <%--}--%>
+        <%--});--%>
+    <%--});--%>
+
+    getPageList(1);
 
 
-    //分页
-    $("#page").paging({
-        pageNo:3 ,
-        totalPage: 4,
-        totalSize: 20,
-        callback: function(num) {
+    //加载分类数据
+    function getPageList(curPage,parentid,cid) {
+        $.post("${ctx}/web_getPageList.action", {currPage: curPage,parentid:parentid,cid:cid}, function (data) {
+            /*console.log(JSON.parse(data).list);*/
+            console.log(data);
+            var html = template('mytpl', {list: data.list});
+            $("#content").html(html);
+            //分页
+            $("#page").paging({
+                pageNo: data.currentPage,//当前页
+                totalPage: data.totalPage,//总页数
+                totalSize: data.totalCount,//总记录
+                callback: function (num) {
+                    getPageList(num,parentid,cid);
+                }
+            });
+        });
+    }
 
-        }
-    });
+
+
 </script>
 
 </body>
