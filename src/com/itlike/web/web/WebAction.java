@@ -36,7 +36,7 @@ public class WebAction extends ActionSupport {
         JSONObject jsonObject = JSONObject.fromObject(pageBean,jsonConfig);
         System.out.println(jsonObject);
         //响应给页面
-        ServletActionContext.getResponse().setContentType("text/html:charset=UTF-8");
+        ServletActionContext.getResponse().setContentType("text/json:charset=UTF-8");
         ServletActionContext.getResponse().getWriter().println(jsonObject.toString());
 
 

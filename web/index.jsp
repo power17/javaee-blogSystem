@@ -2,6 +2,7 @@
          pageEncoding="UTF-8"%>
 
 <%@include file="header.jsp"%>
+<script src="${ctx}/js/template.js"></script>
 <style>
     .content_item {
         height: 160px;
@@ -49,42 +50,7 @@
                         <div id="lk_blog_list" class="container">
                             <div class="row">
                                 <ul class="blog-list" id="content">
-                                    <li class="content_item">
-                                        <div class="blog-list-left" style="float: left;">
-                                            <div class="main-title">
-                                                <a href="detail.jsp">标题标题标题标题标题标题</a>
-                                            </div>
-                                            <p class="sub-title">描述描述描述描述描述描述描述描述</p>
-                                            <div class="meta">
-                                                2020-08-31
-                                            </div>
-                                        </div>
-                                        <img src="images/blog_img.png" alt="" class="img-rounded">
-                                    </li>
-                                    <li class="content_item">
-                                        <div class="blog-list-left" style="float: left;">
-                                            <div class="main-title">
-                                                <a href="detail.jsp">标题标题标题标题标题标题</a>
-                                            </div>
-                                            <p class="sub-title">描述描述描述描述描述描述描述描述</p>
-                                            <div class="meta">
-                                                2020-08-31
-                                            </div>
-                                        </div>
-                                        <img src="images/blog_img.png" alt="" class="img-rounded">
-                                    </li>
-                                    <li class="content_item">
-                                        <div class="blog-list-left" style="float: left;">
-                                            <div class="main-title">
-                                                <a href="detail.jsp">标题标题标题标题标题标题</a>
-                                            </div>
-                                            <p class="sub-title">描述描述描述描述描述描述描述描述</p>
-                                            <div class="meta">
-                                                2020-08-31
-                                            </div>
-                                        </div>
-                                        <img src="images/blog_img.png" alt="" class="img-rounded">
-                                    </li>
+
                                 </ul>
                                 <div id="page" class="page_div"></div>
                             </div>
@@ -113,10 +79,66 @@
         </div>
     </div>
 </footer>
+<script id="mytpl" type="text/html">
+    {{each list as value}}
+    <li class="content_item">
+        <div class="blog-list-left" style="float: left;">
+        <div class="main-title">
+        <a href="detail.jsp">{{value.article_title}}</a>
+        </div>
+        <p class="sub-title">{{value.article_desc}}</p>
+        <div class="meta">
+            {{value.article_time | dateFormat:'yyyy-MM-dd '}}
+    </div>
+    </div>
+    <img src="${ctx}/upload/{{value.article_pic}}" alt="" class="img-rounded">
+    </li>
+    {{/each}}
+
+
+</script>
+
+
+
+
 <script>
+
+
+    //时间戳转换
+    template.helper('dateFormat', function (date, format) {
+
+        date = new Date(date);
+
+        var map = {
+            "M": date.getMonth() + 1, //月份
+            "d": date.getDate(), //日
+            "h": date.getHours(), //小时
+            "m": date.getMinutes(), //分
+            "s": date.getSeconds(), //秒
+            "q": Math.floor((date.getMonth() + 3) / 3), //季度
+            "S": date.getMilliseconds() //毫秒
+        };
+        format = format.replace(/([yMdhmsqS])+/g, function (all, t) {
+            var v = map[t];
+            if (v !== undefined) {
+                if (all.length > 1) {
+                    v = '0' + v;
+                    v = v.substr(v.length - 2);
+                }
+                return v;
+            } else if (t === 'y') {
+                return (date.getFullYear() + '').substr(4 - all.length);
+            }
+            return all;
+        });
+        return format;
+    });
     $.post("${ctx}/web_getPageList.action",function (data) {
-        console.log(data);
-    })
+        console.log(data.list);
+
+        var html = template("mytpl",{list:data.list});
+        $('#content').html(html);
+    });
 
 
     //分页
