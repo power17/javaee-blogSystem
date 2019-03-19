@@ -139,6 +139,7 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
         //把查询的数据存放在值栈中
         ActionContext.getContext().getValueStack().push(resArticle);
         return "edit";
+//        return null;
 
     }
 

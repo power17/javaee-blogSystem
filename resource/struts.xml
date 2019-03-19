@@ -49,7 +49,7 @@
         <!--文章-->
         <action name="article_*" method="{1}" class="articleAction">
             <result name="list">/WEB-INF/mgr/mgr_main.jsp</result>
-            <result name="edit">/mgr_edit_article.jsp</result>
+            <result name="edit">/WEB-INF/mgr/mgr_edit_article.jsp</result>
             <result name="listres" type="redirectAction">article_pageList.action</result>
             <interceptor-ref name="loginInterceptor">
                 <param name="excludeMethods">getCategory</param>

@@ -97,7 +97,7 @@
 
 
             $(data).each(function (i,obj) {
-                $('#nav').append("<li class='active'><a href='index.jsp'>"+ obj.cname+"</a></li>");
+                $('#nav').append("<li class='active'><a href='index.jsp?parentid="+obj.cid+"'>"+ obj.cname+"</a></li>");
 
 
             })

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8" %>
 
-<%@include file="header.jsp"%>
+<%@include file="header.jsp" %>
 <script src="${ctx}/js/template.js"></script>
 <style>
     .content_item {
@@ -25,18 +25,8 @@
         <article class="mainarea" style="display:block;">
             <div class="blog-tab">
 
-                <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane fade in active" id="tab">
-                        <%--分类信息--%>
-                        <div id="lk_blog_two" class="container">
-                            <div class="row">
-                                <button class="btn-tag">Mysql</button>
-                                <button class="btn-tag">面向对象</button>
-                                <button class="btn-tag">jdbc</button>
-                                <button class="btn-tag">web服务器</button>
-                            </div>
-                        </div>
-                    </div>
+                <div class="tab-content" id="tab_content">
+
                 </div>
             </div>
         </article>
@@ -65,7 +55,7 @@
 <footer id="lk_footer">
     <div class="container">
         <div class="footer-top">
-          <!--分页-->
+            <!--分页-->
         </div>
         <div class="footer-bottom col-sm-offset-2 hidden-sm hidden-xs">
             <ul>
@@ -83,22 +73,34 @@
     {{each list as value}}
     <li class="content_item">
         <div class="blog-list-left" style="float: left;">
-        <div class="main-title">
-        <a href="detail.jsp">{{value.article_title}}</a>
+            <div class="main-title">
+                <a href="detail.jsp?id={{value.article_id}}">{{value.article_title}}</a>
+            </div>
+            <p class="sub-title">{{value.article_desc}}</p>
+            <div class="meta">
+                {{value.article_time | dateFormat:'yyyy-MM-dd '}}
+            </div>
         </div>
-        <p class="sub-title">{{value.article_desc}}</p>
-        <div class="meta">
-            {{value.article_time | dateFormat:'yyyy-MM-dd '}}
-    </div>
-    </div>
-    <img src="${ctx}/upload/{{value.article_pic}}" alt="" class="img-rounded">
+        <img src="${ctx}/upload/{{value.article_pic}}" alt="" class="img-rounded">
     </li>
     {{/each}}
 
 
 </script>
 
+<script type="text/html" id="mytpl2">
+    <div role="tabpanel" class="tab-pane fade in active" id="tab">
 
+        <div id="lk_blog_two" class="container">
+            <div class="row">
+                {{each list as value}}
+                <button class="btn-tag category_btn" data-cid="{{value.cid}}">{{value.cname}}</button>
+
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</script>
 
 
 <script>
@@ -133,28 +135,37 @@
         });
         return format;
     });
-    <%--$.post("${ctx}/web_getPageList.action",function (data) {--%>
-        <%--console.log(data.list);--%>
 
-        <%--var html = template("mytpl",{list:data.list});--%>
-        <%--$('#content').html(html);--%>
-        <%--//分页--%>
-        <%--$("#page").paging({--%>
-            <%--pageNo:data.currentPage,--%>
-            <%--totalPage: data.totalPage,--%>
-            <%--totalSize: data.totalCount,--%>
-            <%--callback: function(num) {--%>
+    //获取当前参数
+    function getParams(key) {
+        var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) {
+            return unescape(r[2]);
+        }
+        return null;
+    };
 
-            <%--}--%>
-        <%--});--%>
-    <%--});--%>
+    var parentid = getParams("parentid");
 
-    getPageList(1);
+    if (parentid != null) {
+        //根据parentid加载子级
+        $.post("${pageContext.request.contextPath}/article_getCategory.action", {"parentid": parentid}, function (data) {
+
+            var html = template('mytpl2', {list: data});
+            $("#tab_content").html(html);
+        }, "json");
+
+        //加载数据
+        getPageList(1,parentid);
+    } else {
+        getPageList(1,null);
+    }
 
 
     //加载分类数据
-    function getPageList(curPage,parentid,cid) {
-        $.post("${ctx}/web_getPageList.action", {currPage: curPage,parentid:parentid,cid:cid}, function (data) {
+    function getPageList(curPage, parentid, cid) {
+        $.post("${ctx}/web_getPageList.action", {currPage: curPage, parentid: parentid, cid: cid}, function (data) {
             /*console.log(JSON.parse(data).list);*/
             console.log(data);
             var html = template('mytpl', {list: data.list});
@@ -165,12 +176,19 @@
                 totalPage: data.totalPage,//总页数
                 totalSize: data.totalCount,//总记录
                 callback: function (num) {
-                    getPageList(num,parentid,cid);
+                    getPageList(num, parentid, cid);
                 }
             });
         });
     }
 
+    //点击按钮
+    $('body').on('click','.category_btn',function () {
+        var cid = $(this).data('cid');
+        getPageList(1,null,cid);
+
+
+    });
 
 
 </script>

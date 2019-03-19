@@ -80,5 +80,22 @@
     </div>
 </footer>
 
+<script>
+    //获取当前参数
+    function getParams(key) {
+        var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) {
+            return unescape(r[2]);
+        }
+        return null;
+    };
+
+    var id = getParams("id");
+
+
+
+</script>
+
 </body>
 </html>
