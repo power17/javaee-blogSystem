@@ -152,6 +152,7 @@
         //根据parentid加载子级
         $.post("${pageContext.request.contextPath}/article_getCategory.action", {"parentid": parentid}, function (data) {
 
+
             var html = template('mytpl2', {list: data});
             $("#tab_content").html(html);
         }, "json");
@@ -167,7 +168,7 @@
     function getPageList(curPage, parentid, cid) {
         $.post("${ctx}/web_getPageList.action", {currPage: curPage, parentid: parentid, cid: cid}, function (data) {
             /*console.log(JSON.parse(data).list);*/
-            console.log(data);
+
             var html = template('mytpl', {list: data.list});
             $("#content").html(html);
             //分页

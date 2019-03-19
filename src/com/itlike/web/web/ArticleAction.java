@@ -85,7 +85,7 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
         JSONArray jsonArray = JSONArray.fromObject(list,new JsonConfig());
         System.out.println(jsonArray);
         //响应给页面
-        ServletActionContext.getResponse().setContentType("text/html:charset=UTF-8");
+        ServletActionContext.getResponse().setContentType("text/html;charset=UTF-8");
         ServletActionContext.getResponse().getWriter().println(jsonArray.toString());
         return null;
     }

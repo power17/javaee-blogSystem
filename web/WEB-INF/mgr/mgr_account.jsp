@@ -7,7 +7,7 @@
     <title>Title</title>
     <link rel="stylesheet" href="../../css/style.css" type="text/css" />
     <link rel="stylesheet" href="../../css/amazeui.min.css" />
-    <link rel="stylesheet" href="js/pageStyle.css">
+    <link rel="stylesheet" href="../../css/pageStyle.css">
     <script src="../../js/jquery.min.js"></script>
 </head>
 <body>

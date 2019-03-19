@@ -78,7 +78,7 @@
 </nav>
 <!--banner-->
 <section id="lk_blog_one">
-    <img src="images/about_java.png" alt="" class="one-img" width="280">
+    <img src="" alt="" class="one-img" width="280">
     <div class="one-right">
         <h1>撩课学院技术专栏</h1>
         <span>喜欢IT,就来撩课吧!</span>

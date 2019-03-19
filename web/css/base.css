@@ -57,13 +57,13 @@ a, a:hover {
 .icon-tel {
     width: 15px;
     height: 16px;
-    background: url('../img/tel.png') no-repeat center 0;
+    /*background: url('../img/tel.png') no-repeat center 0;*/
 }
 
 .icon-email {
     width: 18px;
     height: 16px;
-    background: url('../img/email.png') no-repeat center 0;
+    /*background: url('../img/email.png') no-repeat center 0;*/
 }
 
 /***************第一部分***************/

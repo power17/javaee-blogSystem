@@ -60,10 +60,26 @@ public class WebAction extends ActionSupport {
         JSONObject jsonObject = JSONObject.fromObject(pageBean,jsonConfig);
         System.out.println(jsonObject);
         //响应给页面
-        ServletActionContext.getResponse().setContentType("text/json:charset=UTF-8");
+        ServletActionContext.getResponse().setContentType("text/json;charset=UTF-8");
         ServletActionContext.getResponse().getWriter().println(jsonObject.toString());
 
 
+    }
+
+    //详情页
+    @Setter
+    private Integer id;
+    public void getDetail() throws IOException {
+        Article oneArticle = articleService.getOneArticle(id);
+        //以json传回浏览器
+        JsonConfig jsonConfig = new JsonConfig();
+        //懒加载（因为关联对象）
+        jsonConfig.setExcludes(new String[]{"handler","hibernateLazyInitializer"});
+        JSONObject jsonObject = JSONObject.fromObject(oneArticle,jsonConfig);
+        System.out.println(jsonObject);
+        //响应给页面
+        ServletActionContext.getResponse().setContentType("text/json;charset=UTF-8");
+        ServletActionContext.getResponse().getWriter().println(jsonObject.toString());
     }
 
 }

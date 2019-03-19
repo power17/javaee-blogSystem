@@ -60,7 +60,7 @@
         
         <!--前端-->
         <action name="web_*" class="webAction" method="{1}">
-            <allowed-methods>getPageList</allowed-methods>
+            <allowed-methods>getPageList,getDetail</allowed-methods>
         </action>
     </package>
 

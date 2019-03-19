@@ -10,10 +10,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="${ctx }/css/style.css"
-          type="text/css" />
+    <link rel="stylesheet" href="${ctx }/css/style.css" type="text/css" />
     <link rel="stylesheet" href="${ctx }/css/amazeui.min.css" />
-    <link rel="stylesheet" href="${ctx }/css/pageStyle.css">
+    <link rel="stylesheet" href="${ctx }/css/pageStyle.css"/>
 
 </head>
 <body style="background:#f3f3f3;">
